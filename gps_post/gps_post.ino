@@ -113,7 +113,9 @@ void loop() {
     String s = String(gps_lon)+String(",")+String(gps_lat);
     char buf[s.length()];
     s.toCharArray(buf,s.length());
-    mqtt.publish(topicPos,buf ,s.length(),true);
+    uint8_t buff[s.length()];
+    memcpy(buff, buf, s.length());
+    mqtt.publish(topicPos, buff ,s.length(),true);
   } else {
     // Reconnect every 10 seconds
     unsigned long t = millis();
