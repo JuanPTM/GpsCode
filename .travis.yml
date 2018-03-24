@@ -1,0 +1,12 @@
+language: c
+sudo: false
+before_install:
+  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+install:
+  - arduino --install-library "tinyGSM"
+script:
+  - build_main_platforms
+notifications:
+  email:
+    on_success: change # default: change
+    on_failure: always # default: always
